@@ -1,1 +1,42 @@
+#include <iostream>
+
+using namespace std;
+void mostrarHora(int h, int m, int s) {
+    cout << "\n=== HORA REGISTRADA ===\n";
+    cout << h << ":" << m << ":" << s << "\n";
+    cout << "=======================\n";
+}
+
+void modificarHora(int &h, int &m, int &s) {
+    cout << "Ingrese las horas -> 0-23: ";
+    cin >> h;
+    cout << "Ingrese los minutos -> 0-59: ";
+    cin >> m;
+    cout << "Ingrese los segundos -> 0-59: ";
+    cin >> s;
+}
+
+int main() {
+    int h, m, s;
+    char respuesta;
+
+    cout << "===== INGRESO INICIAL DE LA HORA =====\n";
+    modificarHora(h, m, s);
+
+    do {
+        mostrarHora(h, m, s);
+        cout << "¿Desea cambiar la hora? (s/n): ";
+        cin >> respuesta;
+
+        if (respuesta == 's' || respuesta == 'S') {
+            cout << "\n=== ACTUALIZANDO HORA ===\n";
+            modificarHora(h, m, s);
+        }
+
+    } while (respuesta != 'n' && respuesta != 'N');
+
+    cout << "Programa finalizado.\n";
+
+    return 0;
+}
 
