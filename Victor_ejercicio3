@@ -1,1 +1,109 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Jean {
+public:
+    string codigo;
+    string color;
+    string talla;
+    char fueTenido;
+    int cantTenidos;
+    float precio;
+    int cantBotones;
+    float humedad;
+    string estadoTela;
+
+    void MostrarDatos() {
+        cout << "\n===== DATOS DEL JEAN =====\n";
+        cout << "Codigo: " << codigo << "\n";
+        cout << "Color: " << color << "\n";
+        cout << "Talla: " << talla << "\n";
+        cout << "Fue tenido: " << fueTenido << "\n";
+        cout << "Cantidad de tenidos: " << cantTenidos << "\n";
+        cout << "Precio: $" << precio << "\n";
+        cout << "Cant. Botones: " << cantBotones << "\n";
+        cout << "Humedad: " << humedad << "%\n";
+        cout << "Estado de la tela: " << estadoTela << "\n";
+        cout << "============================\n";
+    }
+
+    void Lavar() {
+        if (cantTenidos > 0) {
+            cantTenidos--;
+            cout << "\nHas lavado el jean. Se perdio un poco de color\n";
+            cout << "Tenidos restantes: " << cantTenidos << "\n";
+        } else {
+            cout << "\nEl jean ya no tiene tenidos previos para perder\n";
+        }
+    }
+
+    void Secar() {
+        if (humedad > 0) {
+            humedad -= 15.0;
+            if (humedad < 0) {
+                humedad = 0;
+            }
+            cout << "\nHas secado el jean.\n";
+            cout << "Humedad actual: " << humedad << "%\n";
+        } else {
+            cout << "\nEl jean ya esta completamente seco -> 0% humedad\n";
+        }
+    }
+};
+
+int main() {
+    Jean miJean;
+    int opcion;
+
+    cout << "===== REGISTRO INICIAL DEL JEAN =====\n";
+    cout << "Ingrese el codigo: ";
+    cin >> miJean.codigo;
+    cout << "Ingrese el color: ";
+    cin >> miJean.color;
+    cout << "Ingrese la talla: ";
+    cin >> miJean.talla;
+    cout << "Fue tenido (s/n): ";
+    cin >> miJean.fueTenido;
+    cout << "Ingrese cantidad de tenidos: ";
+    cin >> miJean.cantTenidos;
+    cout << "Ingrese el precio: ";
+    cin >> miJean.precio;
+    cout << "Ingrese la cantidad de botones: ";
+    cin >> miJean.cantBotones;
+    cout << "Ingrese el porcentaje de humedad -> 0 a 100: ";
+    cin >> miJean.humedad;
+    cout << "Ingrese el estado de la tela -> ej. Nueva: ";
+    cin >> miJean.estadoTela;
+
+    do {
+        cout << "\n===== MENU DE GESTION =====\n";
+        cout << "1. Mostrar datos del jean\n";
+        cout << "2. Lavar jean\n";
+        cout << "3. Secar jean\n";
+        cout << "4. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                miJean.MostrarDatos();
+                break;
+            case 2:
+                miJean.Lavar();
+                break;
+            case 3:
+                miJean.Secar();
+                break;
+            case 4:
+                cout << "Saliendo del sistema...\n";
+                break;
+            default:
+                cout << "Opcion invalida.\n";
+        }
+    } while (opcion != 4);
+
+    return 0;
+}
 
